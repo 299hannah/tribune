@@ -32,7 +32,7 @@ def past_days_news(request,past_date):
 def news_today(request):
     date = dt.date.today()
     news = Article.todays_news()
-      
+    
   
     return render(request, 'all-news/today-news.html', {"date":date, "news":news})
 
@@ -67,7 +67,18 @@ def search_results(request):
 def article(request,article_id):
     try:
         article = Article.objects.get(id = article_id)
-
     except DoesNotExist:
         raise Http404()
     return render (request,"all-news/article.html",{"article":article})
+
+# def all(request):
+#     try:
+#         article = Article.objects()
+#     except DoesNotExist:
+#         raise Http404
+#     all = Article.article.get(id = article_id)
+#     news = Article.todays_news()
+  
+    
+#     return render (request, "all-news/all.html",{"date":dt.date,"all":all, "news":news, "article":article})
+
